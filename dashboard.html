@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Titanic</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-light">
+
+<div class="container py-4">
+    <h1 class="mb-4">Dashboard: Análisis Titanic</h1>
+    
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card p-3 shadow-sm">
+                <h5>Supervivientes por Sexo</h5>
+                <canvas id="graficoSexo"></canvas>
+            </div>
+        </div>
+        
+        <div class="col-md-6 mb-4">
+            <div class="card p-3 shadow-sm">
+                <h5>Distribución por Clase</h5>
+                <canvas id="graficoClase"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Configuración Gráfico 1: Supervivientes por sexo
+    const ctx1 = document.getElementById('graficoSexo').getContext('2d');
+    new Chart(ctx1, {
+        type: 'bar',
+        data: {
+            labels: ['Mujeres', 'Hombres'],
+            datasets: [{
+                label: 'Supervivientes',
+                data: [339, 161], // Datos de ejemplo
+                backgroundColor: ['#ff9999', '#66b3ff']
+            }]
+        }
+    });
+
+    // Configuración Gráfico 2: Pasajeros por clase
+    const ctx2 = document.getElementById('graficoClase').getContext('2d');
+    new Chart(ctx2, {
+        type: 'pie',
+        data: {
+            labels: ['1ª Clase', '2ª Clase', '3ª Clase'],
+            datasets: [{
+                data: [323, 277, 709], // Datos de ejemplo
+                backgroundColor: ['#f1c40f', '#95a5a6', '#e67e22']
+            }]
+        }
+    });
+</script>
+</body>
+</html>
